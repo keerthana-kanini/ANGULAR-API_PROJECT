@@ -1,0 +1,55 @@
+.widget-box {
+    background: radial-gradient(circle, #8bdedf, #75a8e2);
+    border-radius: 50px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s, background-color 0.3s;
+    height: 200px;
+  }
+  
+  
+  .widget-box:hover {
+    transform: translateY(-5px);
+    background-color: #89badb; /* Change the background color to blue on hover */
+  }
+  
+  .tp_widget {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+  }
+  
+  .tp_widget:hover {
+    color: #906fcb;
+  }
+  
+  .tp_widget img {
+    margin-bottom: 10px;
+  }
+  
+  .tp_widget h5 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  .carousel-container {
+    margin-bottom: 20px; /* Adjust the margin-bottom value to add a gap */
+}
+
+.top-widgets {
+    margin-top: 20px; /* Adjust the margin-top value to add a gap */
+}
+.pg_widget{
+    /* background: radial-gradient(circle, #8bdedf, #75a8e2); */
+    background-origin: padding-box;
+    border-radius: 50x;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s, background-color 0.3s;
+    height: 150px;
+    left:auto
+}

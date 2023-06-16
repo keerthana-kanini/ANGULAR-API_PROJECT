@@ -1,0 +1,12 @@
+<h2>Get Appointment by ID:</h2>
+<label for="appointmentId">Appointment ID:</label>
+<input type="number" [(ngModel)]="appointmentId" name="appointmentId" required>
+<button (click)="getAppointmentById()">Get Appointment</button>
+
+<div *ngIf="appointment">
+  <h3>Appointment Details:</h3>
+  <p>Appointment ID: {{ appointment.appointment_Id }}</p>
+  <p>Patient ID: {{ appointment.patient_Id }}</p>
+  <p>Doctor ID: {{ appointment.doctor_Id }}</p>
+  <p>Appointment Date: {{ appointment.appointment_Date | date }}</p>
+</div>

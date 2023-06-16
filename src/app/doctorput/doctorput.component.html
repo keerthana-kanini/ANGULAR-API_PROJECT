@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <a class="navbar-brand" href="#"><img src="assets/APOLLOHOSP.jpg"  height="55" style="border-radius: 10px;margin-right: 10px;" class="logo-image">
+      APOLLO HOSPITALS</a>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-
+  target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-
+  label="Toggle navigation">
+  
+  <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+
+
+<div class="container">
+    <div class="form-container">
+      <h4>DOCTOR UPDATE</h4>
+  
+      <hr>
+  
+      <form>
+        <label for="doctor_Id"><b>Doctor Id</b></label>
+        <input type="number" name="doctor_Id" id="doctor_Id"  [(ngModel)]="doctor_Id"[(ngModel)]="doctorput.doctor_Id" required>
+  
+        <label for="doctor_Name"><b>Doctor Name</b></label>
+        <input type="text" placeholder="Enter Doctor Name" name="doctor_Name" id="doctor_Name" [(ngModel)]="doctorput.doctor_Name" required>
+  
+        <label for="specialization"><b>Specialization</b></label>
+        <input type="text" placeholder="Enter Specialization" name="specialization" id="specialization" [(ngModel)]="doctorput.specialization" required>
+  
+        <label for="doctor_No"><b>Doctor Number</b></label>
+        <input type="text" placeholder="Enter Doctor Number" name="doctor_No" id="doctor_No" [(ngModel)]="doctorput.doctor_No" required>
+  
+        <hr>
+  
+        <button (click)="Updatedoctor()">Update</button>
+      </form>
+    </div>
+  </div>
+  
+  

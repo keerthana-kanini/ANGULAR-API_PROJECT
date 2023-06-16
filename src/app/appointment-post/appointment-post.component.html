@@ -1,0 +1,8 @@
+<h2>Create Appointment:</h2>
+<label for="patientId">Patient ID:</label>
+<input type="number" [(ngModel)]="appointment.patient_Id" name="patientId" required>
+<label for="doctorId">Doctor ID:</label>
+<input type="number" [(ngModel)]="appointment.doctor_Id" name="doctorId" required>
+<label for="appointmentDate">Appointment Date:</label>
+<input type="date" [(ngModel)]="appointment.appointment_Date" name="appointmentDate" required>
+<button (click)="createAppointment()">Create Appointment</button>

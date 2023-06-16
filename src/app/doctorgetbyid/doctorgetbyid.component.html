@@ -1,0 +1,21 @@
+<input type="text" [(ngModel)]="doctor_Id" placeholder="Enter Doctor Id">
+<button (click)="Getbyid()">Get Doctor</button>
+
+<table style="border: 1px solid #ccc; width: 100%;">
+  <thead>
+    <tr style="background-color: #f2f2f2;">
+      <th style="padding: 10px;">Doctor Id</th>
+      <th style="padding: 10px;">Doctor Name</th>
+      <th style="padding: 10px;">Specialization</th>
+      <th style="padding: 10px;">Doctor No</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid #e27070;">{{ doctor?.doctor_Id }}</td>
+      <td style="padding: 10px; border: 1px solid #89e078;">{{ doctor?.doctor_Name }}</td>
+      <td style="padding: 10px; border: 1px solid #9ffbf4;">{{ doctor?.specialization }}</td>
+      <td style="padding: 10px; border: 1px solid #ae82e6;">{{ doctor?.doctor_No }}</td>
+    </tr>
+  </tbody>
+</table>

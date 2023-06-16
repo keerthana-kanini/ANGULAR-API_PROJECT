@@ -1,0 +1,46 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <a class="navbar-brand" href="#"><img src="assets/APOLLOHOSP.jpg"  height="55" style="border-radius: 10px;margin-right: 10px;" class="logo-image">
+      APOLLO HOSPITALS</a>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-
+  target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-
+  label="Toggle navigation">
+  
+  <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+
+    
+    
+
+
+<div class="heading">
+  <h2>DOCTOR LIST</h2>
+</div>
+<br>
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Doctor ID</th>
+        <th>Doctor Name</th>
+        <th>Specialization</th>
+        <th>Phone Number</th>
+        <!-- Add more table headers as needed -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let doctor of Doctor">
+        <td>{{ doctor.doctor_Id }}</td>
+        <td>{{ doctor.doctor_Name }}</td>
+        <td>{{ doctor.specialization }}</td>
+        <td>{{ doctor.doctor_No }}</td>
+        <!-- Add more table cells as needed -->
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-doctorgetbyid></app-doctorgetbyid>
