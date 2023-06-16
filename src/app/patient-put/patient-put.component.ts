@@ -39,9 +39,11 @@ export class PatientPutComponent {
         next: (data: Patient) => {
           console.log('Patient updated:', data);
           this.patient = data; // Update the patient with the returned data
+          alert('Patient updated successfully!');
         },
         error: (error: any) => {
           console.error('Error updating patient:', error);
+          alert('Error updating patient. Please try again.');
         }
       });
   }

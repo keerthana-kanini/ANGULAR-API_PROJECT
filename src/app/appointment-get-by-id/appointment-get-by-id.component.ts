@@ -15,6 +15,17 @@ export class AppointmentGetByIdComponent {
 
   getAppointmentById(): void {
     this.appointmentService.getAppointmentById(this.appointmentId)
-      .subscribe(appointment => this.appointment = appointment);
+      .subscribe(
+        appointment => {
+          this.appointment = appointment;
+          if (!appointment) {
+            alert('Invalid appointment ID. Please enter a correct ID.');
+          }
+        },
+        error => {
+          console.error('Error retrieving appointment:', error);
+          alert('Invalid appointment ID. Please enter a correct ID.');
+        }
+      );
   }
 }

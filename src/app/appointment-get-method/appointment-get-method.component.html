@@ -1,9 +1,15 @@
-<h2>Appointments:</h2>
-<ul>
-  <li *ngFor="let appointment of appointments">
-    Appointment ID: {{ appointment.appointment_Id }}
-    Patient ID: {{ appointment.patient_Id }}
-    Doctor ID: {{ appointment.doctor_Id }}
-    Appointment Date: {{ appointment.appointment_Date | date }}
-  </li>
-</ul>
+
+<app-appointment-main></app-appointment-main>
+<div class="appointments-container">
+  <div class="appointment-card" *ngFor="let appointment of filteredAppointments">
+    <div class="card-content">
+      <p>Appointment ID: {{ appointment.appointment_Id }}</p>
+      <p>Patient ID: {{ appointment.patient_Id }}</p>
+      <p>Doctor ID: {{ appointment.doctor_Id }}</p>
+      <p>Appointment Date: {{ appointment.appointment_Date | date }}</p>
+      <button (click)="editAppointment(appointment)" class="edit-button">Edit</button>&nbsp;
+<button (click)="confirmDeleteAppointment(appointment)" class="delete-button">Delete</button>
+
+    </div>
+  </div>
+</div>

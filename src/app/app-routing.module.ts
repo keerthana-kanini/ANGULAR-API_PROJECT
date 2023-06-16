@@ -20,6 +20,8 @@ import { AppointmentPostComponent } from './appointment-post/appointment-post.co
 import { AppointmentPutComponent } from './appointment-put/appointment-put.component';
 import { AppointmentDeleteComponent } from './appointment-delete/appointment-delete.component';
 import { DoctorPatientCountComponent } from './doctor-patient-count/doctor-patient-count.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { UserLoginComponent } from './user-login/user-login.component';
 
 const routes: Routes = [
   {path : '', redirectTo:'/list', pathMatch:'full'},
@@ -30,19 +32,24 @@ const routes: Routes = [
   {path:'Getall', component :DoctorgetmethodComponent},
   {path:'GetbyId', component :DoctorgetbyidComponent},
   {path:'Create', component :DoctorpostComponent},
+  { path: 'doctorput/:id', component: DoctorputComponent },
   {path:'Update', component :DoctorputComponent},
   {path:'Delete', component :DoctordeleteComponent},
   {path:'Count', component :DoctorPatientCountComponent},
   {path:'patientgetall', component :PatientgetmethodComponent},
   {path:'patientgetbyid', component :PatientgetbyidComponent},
   {path:'patientinsert', component :PatientPostComponent},
+  { path: 'patientupdate/:id', component: PatientPutComponent } ,
   {path:'patientupdate', component :PatientPutComponent},
   {path:'patientdelete', component :PatientDeleteComponent},
   {path:'appointmentgetall', component :AppointmentGetMethodComponent},
   {path:'appointmentgetbyid', component :AppointmentGetByIdComponent},
   {path:'appointmentput', component :AppointmentPutComponent},
+  { path: 'appointput/:id', component: AppointmentPutComponent },
   {path:'appointmentpost', component :AppointmentPostComponent},
   {path:'appointmentdelete', component :AppointmentDeleteComponent},
+  {path:'adminlogin', component :AdminLoginComponent},
+  {path:'userlogin', component :UserLoginComponent},
 
 
   {path:'**',redirectTo:'/list'}

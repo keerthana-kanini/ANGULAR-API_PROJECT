@@ -1,26 +1,11 @@
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-  <a class="navbar-brand" href="#"><img src="assets/APOLLOHOSP.jpg"  height="55" style="border-radius: 10px;margin-right: 10px;" class="logo-image">
-      APOLLO HOSPITALS</a>
-  
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-
-  target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-
-  label="Toggle navigation">
-  
-  <span class="navbar-toggler-icon"></span>
-  </button>
-</nav>
-
-    
-    
-
-
-<div class="heading">
-  <h2>DOCTOR LIST</h2>
-</div>
-<br>
-
 <div class="container">
+  <div class="input-group mb-3">
+    <input type="text" [(ngModel)]="searchId" class="form-control" placeholder="Enter Doctor Id">
+    <div class="input-group-append">
+      <button class="btn btn-primary" type="button" (click)="searchDoctor()">Search</button>
+    </div>
+  </div>
+
   <table class="table">
     <thead>
       <tr>
@@ -28,19 +13,20 @@
         <th>Doctor Name</th>
         <th>Specialization</th>
         <th>Phone Number</th>
-        <!-- Add more table headers as needed -->
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let doctor of Doctor">
+      <tr *ngFor="let doctor of filteredDoctors">
         <td>{{ doctor.doctor_Id }}</td>
         <td>{{ doctor.doctor_Name }}</td>
         <td>{{ doctor.specialization }}</td>
         <td>{{ doctor.doctor_No }}</td>
-        <!-- Add more table cells as needed -->
+        <td>
+          <button class="btn btn-success" (click)="openUpdateForm(doctor)">Update</button>&nbsp;
+          <button class="btn btn-danger" (click)="deleteDoctor(doctor)">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
-
-<app-doctorgetbyid></app-doctorgetbyid>

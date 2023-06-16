@@ -1,33 +1,31 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-  <a class="navbar-brand" href="#"><img src="assets/APOLLOHOSP.jpg"  height="55" style="border-radius: 10px;margin-right: 10px;" class="logo-image">
-      APOLLO HOSPITALS</a>
-  
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-
-  target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-
-  label="Toggle navigation">
-  
-  <span class="navbar-toggler-icon"></span>
-  </button>
-</nav>
-
 <div class="container">
-    <div class="form-container">
-      <h1>DoctorInsert</h1>
+  <div class="form-container">
+    <h1>Doctor Insert</h1>
+
+    <hr>
+
+    <form #doctorForm="ngForm" (ngSubmit)="create()">
+      <label for="doctor_Name"><b>Doctor Name</b></label>
+      <input type="text" placeholder="Enter Doctor Name" name="doctor_Name" id="doctor_Name" [(ngModel)]="doctorpost.doctor_Name" required #doctorName="ngModel">
+      <div *ngIf="doctorName.invalid && (doctorName.dirty || doctorName.touched)" class="error-message">
+        <small *ngIf="doctorName.errors?.['required']">Doctor name is required.</small>
+      </div>
+
+      <label for="specialization"><b>Specialization</b></label>
+      <input type="text" placeholder="Enter Specialization" name="specialization" id="specialization" [(ngModel)]="doctorpost.specialization" required #specialization="ngModel">
+      <div *ngIf="specialization.invalid && (specialization.dirty || specialization.touched)" class="error-message">
+        <small *ngIf="specialization.errors?.['required']">Specialization is required.</small>
+      </div>
+
+      <label for="doctor_No"><b>Doctor Number</b></label>
+      <input type="text" placeholder="Enter Doctor Number" name="doctor_No" id="doctor_No" [(ngModel)]="doctorpost.doctor_No" required #doctorNo="ngModel">
+      <div *ngIf="doctorNo.invalid && (doctorNo.dirty || doctorNo.touched)" class="error-message">
+        <small *ngIf="doctorNo.errors?.['required']">Doctor number is required.</small>
+      </div>
 
       <hr>
-  
-      <form>
-        <label for="doctor_Name"><b>Doctor Name</b></label>
-        <input type="text" placeholder="Enter Doctor Name" name="doctor_Name" id="doctor_Name" [(ngModel)]="doctorpost.doctor_Name" required>
-  
-        <label for="specialization"><b>Specialization</b></label>
-        <input type="text" placeholder="Enter Specialization" name="specialization" id="specialization" [(ngModel)]="doctorpost.specialization" required>
-  
-        <label for="doctor_No"><b>Doctor Number</b></label>
-        <input type="text" placeholder="Enter Doctor Number" name="doctor_No" id="doctor_No" [(ngModel)]="doctorpost.doctor_No" required>
-        <hr>
-  
-       <button (click)="create()">Create</button>
-      </form>
-    </div>
+
+      <button type="submit" [disabled]="doctorForm.invalid">Create</button>
+    </form>
   </div>
+</div>

@@ -8,28 +8,29 @@ import { DPService } from '../dp.service';
   styleUrls: ['./doctorpost.component.css']
 })
 export class DoctorpostComponent {
-  doctorpost : Doctor ={
-    doctor_Id:0,
-    doctor_Name:' ',
-    specialization:' ',
-    doctor_No:' ',
-    
-
+  doctorpost: Doctor = {
+    doctor_Id: 0,
+    doctor_Name: '',
+    specialization: '',
+    doctor_No: ''
   };
 
-  constructor(private apiser:DPService){ }
+  constructor(private apiser: DPService) { }
 
-  ngOnInit():void{
-
-  }
-  create()
-  {
-    this.apiser.createDoctor(this.doctorpost)
-    .subscribe(Doctor => 
-      {
-        console.log('Created Doctor'),Doctor
-      })
+  create(): void {
+    if (this.isValidForm()) {
+      this.apiser.createDoctor(this.doctorpost)
+        .subscribe(() => {
+          alert('Doctor Inserted successfully!');
+        });
+    }
   }
 
-
+  private isValidForm(): boolean {
+    if (!this.doctorpost.doctor_Name || !this.doctorpost.specialization || !this.doctorpost.doctor_No) {
+      alert('Please fill in all the required fields.');
+      return false;
+    }
+    return true;
+  }
 }

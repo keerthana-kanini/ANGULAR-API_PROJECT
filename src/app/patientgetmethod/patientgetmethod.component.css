@@ -1,76 +1,65 @@
-.container {
-    max-width: 900px;
-  }
+/* Navigation bar style */
+.navbar {
+  background-color: #FF3366; /* Replace with your desired color */
+}
 
-  .heading {
-    text-align: center;
-  }
+.navbar-brand {
+  color: #FFFFFF; /* Replace with your desired color */
+}
 
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid #000000;
-  }
+.nav-link {
+  color: #FFFFFF; /* Replace with your desired color */
+}
 
-  .table th {
-    background-color: rgb(26, 88, 118);
-    padding: 12px;
-    text-align: center;
-  }
+/* Patient card style */
+.card {
+  margin-top: 50px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  background-color: #F5F5F5; /* Replace with your desired color */
+}
 
-  .table td {
-    padding: 10px;
-    border: 1px solid #86bad1;
-  }
+.card:hover {
+  transform: translateY(-5px);
+  background-color: #FFFFFF; /* Replace with your desired color */
+}
 
-  .table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
+.card-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333333; /* Replace with your desired color */
+}
 
-  .table tbody tr:hover {
-    background-color: #e6e6e6;
-  }
+.card-text {
+  font-size: 16px;
+  color: #666666; /* Replace with your desired color */
+}
 
-  /* Responsive CSS for Doctor List Table */
-  @media (max-width: 768px) {
-    .table {
-      display: block;
-      overflow-x: auto;
-      white-space: nowrap;
-    }
+.heading {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333333; /* Replace with your desired color */
+}
 
-    .table thead,
-    .table tbody,
-    .table th,
-    .table td,
-    .table tr {
-      display: block;
-    }
+/* Search section style */
+.container-search {
+  margin-top: 20px;
+}
 
-    .table thead tr {
-      position: absolute;
-      top: -9999px;
-      left: -9999px;
-    }
+.label-search {
+  color: #333333; /* Replace with your desired color */
+  font-size: 18px;
+}
 
-    .table tbody tr {
-      border-bottom: 1px solid #ddd;
-    }
+.input-search {
+  width: 100%;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 16px;
+}
 
-    .table td {
-      border: none;
-      position: relative;
-      padding-left: 50%;
-    }
-
-    .table td:before {
-      position: absolute;
-      top: 6px;
-      left: 6px;
-      width: 45%;
-      padding-right: 10px;
-      white-space: nowrap;
-      content: attr(data-label);
-      font-weight: bold;
-    }
-  }
+.button-search {
+  margin-top: 10px;
+}

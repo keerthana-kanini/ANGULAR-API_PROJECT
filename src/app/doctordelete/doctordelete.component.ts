@@ -9,17 +9,19 @@ import { Doctor } from '../Doctor';
 })
 export class DoctordeleteComponent {
   public doctor_Id!: number;
-  Doctors?:Doctor;
+  Doctors?: Doctor;
 
-  constructor(private apiser:DPService){}
-  ngOnInit(): void{
+  constructor(private apiser: DPService) {}
 
+  deletebyid() {
+    const confirmDelete = confirm('Are you sure you want to delete this doctor?');
+    if (confirmDelete) {
+      this.apiser.deleteById(Number(this.doctor_Id))
+        .subscribe((data: Doctor | undefined) => {
+          this.Doctors = data;
+          alert('Doctor deleted successfully!');
+        });
+    }
   }
-  deletebyid()
-  {
-    return this.apiser.deleteById(Number(this.doctor_Id))
-     .subscribe((data: Doctor | undefined) => this.Doctors =data)
-    
-  }
-
+  
 }

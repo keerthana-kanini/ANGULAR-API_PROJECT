@@ -1,61 +1,33 @@
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-  <a class="navbar-brand" href="#"><img src="assets/APOLLOHOSP.jpg"  height="55" style="border-radius: 10px;margin-right: 10px;" class="logo-image">
-      APOLLO HOSPITALS</a>
-  
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-
-  target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-
-  label="Toggle navigation">
-  
-  <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-  <ul class="navbar-nav">
-  <li class="nav-item active">
-  </li>
-  <li class="nav-item">
-  <a class="nav-link" routerLink="/patientgetall">List</a>
-  </li>
-  <li class="nav-item">
-      <a class="nav-link" routerLink="/patientgetbyid">Getbyid</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" routerLink="/patientinsert">Insert</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" routerLink="/patientupdate">Update</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" routerLink="/patientdelete">Delete</a>
-                  </li>
-  </ul>
-  </div>
-  </nav>
-  
-
-
 <h2>Add Patient</h2>
 
-<form (submit)="insertPatient()">
+<form (submit)="insertPatient()" #patientForm="ngForm">
   <div>
     <label>Patient Name:</label>
-    <input type="text" name="patient_Name" [(ngModel)]="patient.patient_Name" required>
+    <input type="text" name="patient_Name" [(ngModel)]="patient.patient_Name" required minlength="3" maxlength="50">
+    <div *ngIf="patientForm.controls['patient_Name'].errors?.['required']">Patient name is required.</div>
+    <div *ngIf="patientForm.controls['patient_Name'].errors?.['minlength']">Patient name should be at least 3 characters.</div>
+    <div *ngIf="patientForm.controls['patient_Name'].errors?.['maxlength']">Patient name should not exceed 50 characters.</div>
   </div>
   <div>
     <label>Disease:</label>
     <input type="text" name="disease" [(ngModel)]="patient.disease" required>
+    <div *ngIf="patientForm.controls['disease'].errors?.['required']">Disease is required.</div>
   </div>
   <div>
     <label>Email:</label>
     <input type="email" name="email" [(ngModel)]="patient.email" required>
+    <div *ngIf="patientForm.controls['email'].errors?.['required']">Email is required.</div>
+    <div *ngIf="patientForm.controls['email'].errors?.['email']">Invalid email format.</div>
   </div>
   <div>
     <label>Phone Number:</label>
     <input type="tel" name="patient_No" [(ngModel)]="patient.patient_No" required>
+    <div *ngIf="patientForm.controls['patient_No'].errors?.['required']">Phone number is required.</div>
   </div>
   <div>
     <label>Doctor ID:</label>
     <input type="number" name="doctor_Id" [(ngModel)]="patient.doctor_Id" required>
+    <div *ngIf="patientForm.controls['doctor_Id'].errors?.['required']">Doctor ID is required.</div>
   </div>
-  <button type="submit">Add Patient</button>
+  <button type="submit" [disabled]="patientForm.invalid">Add Patient</button>
 </form>

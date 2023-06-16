@@ -1,7 +1,8 @@
-<h2>Update Appointment:</h2>
+<app-appointment-main></app-appointment-main>
+<h3>Update Appointment:</h3>
 <label for="appointmentId">Appointment ID:</label>
 <input type="number" [(ngModel)]="appointmentId" name="appointmentId" required>
-<button (click)="getAppointmentById()">Get Appointment</button>
+<button class="btn-primary" (click)="getAppointmentById()">Get Appointment</button>
 
 <div *ngIf="appointment">
   <h3>Appointment Details:</h3>
@@ -10,11 +11,13 @@
   <p>Appointment Date: {{ appointment.appointment_Date | date }}</p>
 
   <h3>Update Appointment:</h3>
-  <label for="patientId">Patient ID:</label>
-  <input type="number" [(ngModel)]="appointment.patient_Id" name="patientId" required>
-  <label for="doctorId">Doctor ID:</label>
-  <input type="number" [(ngModel)]="appointment.doctor_Id" name="doctorId" required>
-  <label for="appointmentDate">Appointment Date:</label>
-  <input type="date" [(ngModel)]="appointment.appointment_Date" name="appointmentDate" required>
-  <button (click)="updateAppointment()">Update Appointment</button>
+  <form>
+    <label for="patientId">Patient ID:</label>
+    <input type="number" [(ngModel)]="appointment.patient_Id" name="patientId" required>
+    <label for="doctorId">Doctor ID:</label>
+    <input type="number" [(ngModel)]="appointment.doctor_Id" name="doctorId" required>
+    <label for="appointmentDate">Appointment Date:</label>
+    <input type="date" [(ngModel)]="appointment.appointment_Date" name="appointmentDate" required>
+    <button class="btn-primary" (click)="updateAppointment()">Update Appointment</button>
+  </form>
 </div>

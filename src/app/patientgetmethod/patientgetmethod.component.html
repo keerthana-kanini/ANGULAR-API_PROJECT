@@ -1,64 +1,65 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-  <a class="navbar-brand" href="#"><img src="assets/APOLLOHOSP.jpg"  height="55" style="border-radius: 10px;margin-right: 10px;" class="logo-image">
-      APOLLO HOSPITALS</a>
+  <a class="navbar-brand" href="#"><img src="assets/APOLLOHOSP.jpg" height="55" style="border-radius: 10px; margin-right: 10px;" class="logo-image">APOLLO HOSPITALS</a>
   
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-
-  target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-
-  label="Toggle navigation">
-  
-  <span class="navbar-toggler-icon"></span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
   </button>
+  
   <div class="collapse navbar-collapse" id="navbarNav">
-  <ul class="navbar-nav">
-  <li class="nav-item active">
-  </li>
-  <li class="nav-item">
-  <a class="nav-link" routerLink="/patientgetall">List</a>
-  </li>
-  <li class="nav-item">
-      <a class="nav-link" routerLink="/patientgetbyid">Getbyid</a>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/patientgetall">List</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" routerLink="/patientinsert">Insert</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" routerLink="/patientupdate">Update</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" routerLink="/patientdelete">Delete</a>
-                  </li>
-  </ul>
+        <a class="nav-link" routerLink="/patientgetbyid">Get by ID</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/patientinsert">Insert</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/patientupdate">Update</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/patientdelete">Delete</a>
+      </li>
+    </ul>
   </div>
-  </nav>
-  
+</nav>
 
-
-<div class="heading">
-  <h2>PATIENT LIST</h2>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="searchId">Search by ID:</label>
+        <input type="number" class="form-control" id="searchId" [(ngModel)]="searchId">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <button class="btn btn-primary" (click)="search()" style="margin-top: 30px;">Search</button>
+      </div>
+    </div>
+  </div>
 </div>
-<br>
+
 <div class="container">
-<table class="table">
-  <thead>
-    <tr>
-      <th>Patient ID</th>
-      <th>Patient Name</th>
-      <th>Disease</th>
-      <th>Email</th>
-      <th>Phone Number</th>
-      <th>Doctor ID</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let patient of patients">
-      <td>{{ patient.patient_Id }}</td>
-      <td>{{ patient.patient_Name }}</td>
-      <td>{{ patient.disease }}</td>
-      <td>{{ patient.email }}</td>
-      <td>{{ patient.patient_No }}</td>
-      <td>{{ patient.doctor?.doctor_Id }}</td>
-    </tr>
-  </tbody>
-</table>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let patient of patients">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">{{ patient.patient_Name }}</h5>
+          <p class="card-text">
+            <strong>Patient ID:</strong> {{ patient.patient_Id }}<br>
+            <strong>Disease:</strong> {{ patient.disease }}<br>
+            <strong>Email:</strong> {{ patient.email }}<br>
+            <strong>Phone Number:</strong> {{ patient.patient_No }}<br>
+            <strong>Doctor ID:</strong> {{ patient.doctor?.doctor_Id }}
+          </p>
+          <button class="btn btn-primary" (click)="editPatient(patient)">Edit</button>&nbsp;
+          <button class="btn btn-danger" (click)="deletePatient(patient.patient_Id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+

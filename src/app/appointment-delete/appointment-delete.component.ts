@@ -13,9 +13,15 @@ export class AppointmentDeleteComponent {
 
   deleteAppointment(): void {
     this.appointmentService.deleteAppointment(this.appointmentId)
-      .subscribe(() => {
-        alert('Appointment deleted successfully!');
-        this.appointmentId = 0;
-      });
+      .subscribe(
+        () => {
+          alert('Appointment deleted successfully!');
+          this.appointmentId = 0;
+        },
+        error => {
+          console.error('Error deleting appointment:', error);
+          alert('An error occurred while deleting the appointment. Please try again later.');
+        }
+      );
   }
 }

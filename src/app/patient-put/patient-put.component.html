@@ -1,66 +1,90 @@
-
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-  <a class="navbar-brand" href="#"><img src="assets/APOLLOHOSP.jpg"  height="55" style="border-radius: 10px;margin-right: 10px;" class="logo-image">
-      APOLLO HOSPITALS</a>
-  
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-
-  target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-
-  label="Toggle navigation">
-  
-  <span class="navbar-toggler-icon"></span>
+  <a class="navbar-brand" href="#"><img src="assets/APOLLOHOSP.jpg" height="55" style="border-radius: 10px; margin-right: 10px;" class="logo-image">APOLLO HOSPITALS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-  <ul class="navbar-nav">
-  <li class="nav-item active">
-  </li>
-  <li class="nav-item">
-  <a class="nav-link" routerLink="/patientgetall">List</a>
-  </li>
-  <li class="nav-item">
-      <a class="nav-link" routerLink="/patientgetbyid">Getbyid</a>
+    <ul class="navbar-nav">
+      <li class="nav-item active"></li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/patientgetall">List</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" routerLink="/patientinsert">Insert</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" routerLink="/patientupdate">Update</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" routerLink="/patientdelete">Delete</a>
-                  </li>
-  </ul>
+        <a class="nav-link" routerLink="/patientgetbyid">Get by ID</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/patientinsert">Insert</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/patientupdate">Update</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/patientdelete">Delete</a>
+      </li>
+    </ul>
   </div>
-  </nav>
-  
+</nav>
+
+<div class="container">
+  <div class="form-container">
+    <h1>Update Patient</h1>
+
+    <hr>
+
+    <form #patientForm="ngForm" (ngSubmit)="updatePatient()">
+      <div class="form-group">
+        <label for="patient_Id"><b>Patient ID</b></label>
+        <input type="number" placeholder="Enter Patient ID" name="patient_Id" id="patient_Id" [(ngModel)]="patient.patient_Id" required #patientId="ngModel">
+        <div *ngIf="patientId.invalid && (patientId.dirty || patientId.touched)" class="error-message">
+          <small *ngIf="patientId.errors?.['required']">Patient ID is required.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="patient_Name"><b>Patient Name</b></label>
+        <input type="text" placeholder="Enter Patient Name" name="patient_Name" id="patient_Name" [(ngModel)]="patient.patient_Name" required #patientName="ngModel">
+        <div *ngIf="patientName.invalid && (patientName.dirty || patientName.touched)" class="error-message">
+          <small *ngIf="patientName.errors?.['required']">Patient name is required.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="disease"><b>Disease</b></label>
+        <input type="text" placeholder="Enter Disease" name="disease" id="disease" [(ngModel)]="patient.disease" required #disease="ngModel">
+        <div *ngIf="disease.invalid && (disease.dirty || disease.touched)" class="error-message">
+          <small *ngIf="disease.errors?.['required']">Disease is required.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email"><b>Email</b></label>
+        <input type="email" placeholder="Enter Email" name="email" id="email" [(ngModel)]="patient.email" required #email="ngModel">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+          <small *ngIf="email.errors?.['required']">Email is required.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="patient_No"><b>Phone Number</b></label>
+        <input type="tel" placeholder="Enter Phone Number" name="patient_No" id="patient_No" [(ngModel)]="patient.patient_No" required #phoneNumber="ngModel">
+        <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="error-message">
+          <small *ngIf="phoneNumber.errors?.['required']">Phone number is required.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="doctor_Id"><b>Doctor ID</b></label>
+        <input type="number" placeholder="Enter Doctor ID" name="doctor_Id" id="doctor_Id" [(ngModel)]="patient.doctor_Id" required #doctorId="ngModel">
+        <div *ngIf="doctorId.invalid && (doctorId.dirty || doctorId.touched)" class="error-message">
+          <small *ngIf="doctorId.errors?.['required']">Doctor ID is required.</small>
+        </div>
+      </div>
+
+      <hr>
+
+      <button type="submit" [disabled]="patientForm.invalid">Update</button>
+    </form>
+  </div>
+</div>
 
 
-<h2>Update Patient</h2>
-
-<form (submit)="updatePatient()">
-  <div>
-    <label>Patient ID:</label>
-    <input type="number" [(ngModel)]="patient.patient_Id" name="patientId" required>
-  </div>
-  <div>
-    <label>Patient Name:</label>
-    <input type="text" [(ngModel)]="patient.patient_Name" name="patientName" required>
-  </div>
-  <div>
-    <label>Disease:</label>
-    <input type="text" [(ngModel)]="patient.disease" name="disease" required>
-  </div>
-  <div>
-    <label>Email:</label>
-    <input type="email" [(ngModel)]="patient.email" name="email" required>
-  </div>
-  <div>
-    <label>Phone Number:</label>
-    <input type="tel" [(ngModel)]="patient.patient_No" name="phoneNumber" required>
-  </div>
-  <div>
-    <label>Doctor ID:</label>
-    <input type="number" [(ngModel)]="patient.doctor_Id" name="doctorId" required>
-  </div>
-  <button type="submit">Update Patient</button>
-</form>

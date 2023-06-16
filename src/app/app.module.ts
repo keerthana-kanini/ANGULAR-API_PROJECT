@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {  HttpClientModule } from '@angular/common/http';
+import {  HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { DoctorgetmethodComponent } from './doctorgetmethod/doctorgetmethod.component';
 import { DoctorgetbyidComponent } from './doctorgetbyid/doctorgetbyid.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
@@ -25,6 +25,11 @@ import { AppointmentPostComponent } from './appointment-post/appointment-post.co
 import { AppointmentPutComponent } from './appointment-put/appointment-put.component';
 import { AppointmentDeleteComponent } from './appointment-delete/appointment-delete.component';
 import { DoctorPatientCountComponent } from './doctor-patient-count/doctor-patient-count.component';
+import { AuthInterceptor } from './auth.interceptor';
+import { AuthService } from './auth.service';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { UserLoginComponent } from './user-login/user-login.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -50,6 +55,8 @@ import { DoctorPatientCountComponent } from './doctor-patient-count/doctor-patie
     AppointmentPutComponent,
     AppointmentDeleteComponent,
     DoctorPatientCountComponent,
+    AdminLoginComponent,
+    UserLoginComponent,
     
   ],
   imports: [
@@ -59,7 +66,12 @@ import { DoctorPatientCountComponent } from './doctor-patient-count/doctor-patie
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
